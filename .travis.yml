@@ -22,3 +22,14 @@ script: true
  # Another command/method to run tests
 script: 
   - python TestCalculator.py
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $APIKEY
+  app: test-my-travisci-project
+  on:
+    repo: stanley2058/GitProjectExample
+  #Setting your heroku Procfile here!!!
+  run:
+    "web: gunicorn app_run:app"
